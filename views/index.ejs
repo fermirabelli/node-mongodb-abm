@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ABM Ambientes</title>
+  
+</head>
+<body>
+  <h1>Prueba de aplicación de ABM ambientes</h1>
+
+  <ul class="ambientes">
+  <% for(var i=0; i<ambientes.length; i++) {%>
+    <li class="ambiente">
+      <span><%= ambientes[i].nombreambiente %></span>
+	  <span><%= ambientes[i].simulado %></span>
+	  <span><%= ambientes[i].usuario %></span>
+	  <span><%= ambientes[i].fechaenvio %></span>
+    </li>
+  <% } %>
+  </ul>
+
+  <form action="/ambientes" method="POST">
+    <input type="text" placeholder="nombreambiente" name="nombreambiente">
+    <input type="text" placeholder="simulado" name="simulado">
+	<input type="text" placeholder="usuario" name="usuario">
+	<input type="text" placeholder="entregadopor" name="entregadopor">
+	<input type="text" placeholder="sistema" name="sistema">
+	<input type="hidden" placeholder="fechaenvio" value="" id="fechaenvio" name="fechaenvio"/>
+	<script type="text/javascript">
+		var d1 = Date.today();
+		document.getElementById("fechaenvio").value = d1.toString('d MMMM yyyy'); //Need to change this to MYSQL format
+	</script>
+	
+    <button type="submit">Submit</button>
+  </form>
+
+  <div>
+  <h2>Reemplazar Buenos Aires por Mendoza</h2>
+  <button id="update"> Cambio 1 Dato </button>
+  <div>
+  <h2>Elimino entrada prueba</h2>
+  <button id="delete"> Elimino datos de prueba </button>
+  </div>
+
+</div>
+<script src="main.js"></script>
+</body>
+</html>
